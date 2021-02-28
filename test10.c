@@ -1,172 +1,139 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
 
+int main()
+{
+	char ch = 'w';
+	char* pc = &ch;
+	printf("%d\n", sizeof(pc));
+	return 0;
+}
 //int main()
 //{
-//	int a = 0x11223344;
-//	//int* pa = &a;
-//	//*pa = 0;
-//	char* pc = &a;
-//	*pc = 0;
+//	int a = 10;//4个字节
+//	int*p = &a;//取地址
+//	printf("%p\n",&a);
+//	printf("%p\n", p);
+//	*p = 20;//* - 解引用操作符
+//	printf("a=%d\n", a);
+//	//有一种变量是用来存放地址的-指针变量
 //	return 0;
 //}
-
-//int main()
+//函数的实现
+//int Max(int x, int y)
 //{
-//	int arr[10]={ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-//	printf("%d\n", &arr[9] - &arr[0]);//9 指针-指针=中间元素个数
-//	return 0;
+//	if (x > y)
+//		return x;
+//	else
+//		return y;
 //}
-
-//int my_strlen(char* str)
-//{
-//	char* start = str;
-//	char* end = str;
-//	while (*end != '\0');
-//	{
-//		end++;
-//	}
-//	return end - start;
-//}
-//int main()
-//{
-//	char arr[] = "bit";
-//	int len = my_strlen(arr);
-//	printf("%d\n", len);
-//	return 0;
-//}
-
-//int main()
-//{
-//	int a = 10;
-//	int *pa = &a;
-//	int* *ppa = 20;//ppa是二级指针
-//	**ppa = 20;
-//	printf("%d\n", **ppa);
-//	printf("%d\n", a);
-//	return 0;
-//}
-
+//
+//宏的定义
+//#define MAX(x,y) (x>y?x:y)
 //int main()
 //{
 //	int a = 10;
 //	int b = 20;
-//	int c = 30;
-//	int* arr2[3] = { &a, &b, &c };
-//	int i = 0;
-//	for (i = 0; i < 3; i++)
-//	{
-//		printf("%d ", *(arr2[i]));
-//	}
+//	//函数
+//	int max = Max(a, b);
+//	printf("max=%d\n", max);
+//	//宏的方式
+//	max = MAX(a, b);
+//	printf("max=%d\n", max);
 //	return 0;
 //}
-
-//void Init(int arr[], int sz)
+//extern int Add(int, int);
+//int main()
 //{
-//	int i = 0;
-//	for (i = 0; i < sz; i++)
-//	{
-//		arr[i] = 0;
-//	}
-//}
-//void Print(int arr[], int sz)
-//{
-//	int i = 0;
-//	for (i = 0; i < sz; i++)
-//	{
-//		printf("%d ", arr[i]);
-//	}
-//}
-//void Reverse(int arr[], int sz)
-//{
-//	int left = 0;
-//	int right = sz-1;
-//	while (left<=right)
-//	{
-//		int tmp = arr[left];
-//		arr[left] = arr[right];
-//		arr[right] = tmp;
-//		left++;
-//		right--;
-//	}
-//	printf("\n");
+//	int a = 10;
+//	int b = 20;
+//	int c = Add( a, b);
+//	printf("%d\n", c);
+//	return 0;
 //}
 //int main()
 //{
-//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-//	int sz = sizeof(arr) / sizeof(arr[0]);
-//	//Init(arr, sz);
-//	Print(arr, sz);
-//	Reverse(arr, sz);
-//	Print(arr, sz);
+//	extern int g_val;//extern 声明外部符号的
+//	printf("g_val=%d\n", g_val);
 //	return 0;
 //}
-
-//struct结构体关键字	Stu - 结构体标签	strcut Stu - 结构体类型
-// struct Stu
+//void test()
 //{
-//	char name[20];
-//	short age;
-//	char tele[12];
-//	char sex;
-//};
+//	static int a = 1;
+//	a++;
+//	printf("a=%d\n", a);
+//}
 //int main()
 //{
-//	struct Stu s = { "张三", 20, "152451656", "男" };
+//	int i = 0;
+//	while (i < 5)
+//	{
+//		test();
+//		i++;
+//	}
 //	return 0;
 //}
-
-//struct S
-//{
-//	int a;
-//	char c;
-//	char arr[20];
-//	double d;
-//};
-//struct T
-//{
-//	char ch[10];
-//	struct S s;
-//	char *pc;
-//};
 //int main()
 //{
-//	char arr[] = "hei\n";
-//	struct T t = { "hehe", { 100, 'w', "hello", 3.14 }, arr };
-//	printf("%s\n", t.ch);//hehe
-//	printf("%s\n", t.s.arr);//hello
-//	printf("%lf\n", t.s.d);//3.140000
-//	printf("%s\n", t.pc);//hei
+//	int a = 10;
+//	int b = 20;
+//	int max = 0;
+//	max = (a > b ? a: b);
+//	printf("%d", max);
 //	return 0;
 //}
-
-typedef struct Stu
-{
-	char name[20];
-	short age;
-	char tele[12];
-	char sex[5];
-}Stu;
-void Print1(Stu tmp)
-{
-	printf("name:%s\n", tmp.name);
-	printf("age:%d\n", tmp.age);
-	printf("tele:%s\n", tmp.tele);
-	printf("sex:%s\n", tmp.sex);
-}
-void Print2(Stu* ps)
-{
-	printf("name:%s\n", ps->name);
-	printf("age:%d\n", ps->age);
-	printf("tele:%s\n", ps->tele);
-	printf("sex:%s\n", ps->sex);
-}
-int main()
-{
-	Stu s = { "李四",40, "1515615", "男" };
-	//打印结构体数据
-	Print1(s);
-	Print2(&s);
-	return 0;
-}
-
+//int main()
+//{
+//	int a=0;
+//	int b=3;
+//	//int c = a&&b;
+//	int c = a || b;
+//	printf("%d\n", c);
+//	return 0;
+//}
+//int main()
+//{
+//	int a =(int) 3.14;
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 10;
+//	//int b = a++;//后置++，先使用，再++
+//	//int b = ++a;//前置++，先++，再使用
+//	//int b = a--;//后置--，先使用，再--
+//	int b = --a;//前置--，先--，再使用
+//	printf("a = %d\nb = %d\n", a, b);
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = ~a;
+//	printf("%d\n", b);
+//	return 0;
+//}
+//int Max(int x, int y)
+//{
+//	if (x > y)
+//		return x;
+//	else
+//		return y;
+//}
+//int main()
+//{
+//	int num1 = 10;
+//	int num2 = 20;
+//	int max = 0;
+//	max = Max(num1, num2);
+//	printf("Max=%d\n", max);
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	if (a > b)
+//		printf("%d\n", a);
+//	else
+//		printf("%d\n", b);
+//	return 0;
+//}
